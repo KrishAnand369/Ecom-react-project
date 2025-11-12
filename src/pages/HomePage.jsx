@@ -25,7 +25,7 @@ function HomePage() {
         });
     },[]);  //only loads once  as array is [] 
 
-    axios.get('http://localhost:3000/api/cart-items')
+    axios.get('/api/cart-items')
         .then((response)=>{
             setCartItems(response.data);
         });
