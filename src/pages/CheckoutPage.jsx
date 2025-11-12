@@ -1,13 +1,18 @@
 import axios from 'axios'
-import dayjs from 'dayjs'
 import { Link } from 'react-router';
 import { formatMoney } from '../utils/money'
+import { formatDate } from '../utils/date'
 import './CheckoutPage.css'
 import './Checkout-header.css'
 import { useState, useEffect } from 'react';
 
 
 function CheckoutPage({ cartItems }) {
+    let totalItems = 0;
+
+    cartItems.forEach(cartItem => {
+        totalItems += cartItem.quantity;
+    });
     const [deliveryOptions, setDeliveryOptions] = useState([]);
     const [paymentSummary, setPaymentSummary] = useState(null);
 
@@ -41,7 +46,7 @@ function CheckoutPage({ cartItems }) {
 
                     <div className="checkout-header-middle-section">
                         Checkout (<Link className="return-to-home-link"
-                            to="/">2 items</Link>)
+                            to="/">{totalItems} items</Link>)
                     </div>
 
                     <div className="checkout-header-right-section">
@@ -66,7 +71,7 @@ function CheckoutPage({ cartItems }) {
                                 <div key={cartItem.productId}
                                     className="cart-item-container">
                                     <div className="delivery-date">
-                                        Delivery date: {dayjs(selectedDeliveryOption.estimatedDeliveryTimeMs).format('dddd, MMMM D')}
+                                        Delivery date: {formatDate(selectedDeliveryOption.estimatedDeliveryTimeMs)}
                                     </div>
 
                                     <div className="cart-item-details-grid">
@@ -115,7 +120,7 @@ function CheckoutPage({ cartItems }) {
                                                                 name={`delivery-option-${cartItem.productId}`} />
                                                             <div>
                                                                 <div className="delivery-option-date">
-                                                                    {dayjs(deliveryOption.estimatedDeliveryTimeMs).format('dddd,MMMM D')}
+                                                                    {formatDate(selectedDeliveryOption.estimatedDeliveryTimeMs)}
 
                                                                 </div>
                                                                 <div className="delivery-option-price">
