@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { useEffect } from 'react'
 import Header from '../components/Header'
 import { products} from '../assets/data/products'
 import './HomePage.css'
@@ -15,10 +16,14 @@ function HomePage() {
 
 
     //using axios to get data from backend API
-    axios.get('http://localhost:3000/api/products')
-    .then((response)=>{
-        console.log(response.data);
-    });
+    
+    
+    useEffect (()=>{
+        axios.get('http://localhost:3000/api/products')
+        .then((response)=>{
+            console.log(response.data);
+        });
+    },[]);  //only loads once  as array is [] 
 
     return (
         <>
