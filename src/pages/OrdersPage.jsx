@@ -1,10 +1,13 @@
+import './OrdersPage.css'
+import './Header.css'
+
 function OrdersPage() {
     return (
         <>
 
             <div className="header">
                 <div className="left-section">
-                    <a href="index.html" className="header-link">
+                    <a href="/" className="header-link">
                         <img className="logo"
                             src="images/logo-white.png" />
                         <img className="mobile-logo"
@@ -21,12 +24,12 @@ function OrdersPage() {
                 </div>
 
                 <div className="right-section">
-                    <a className="orders-link header-link" href="orders.html">
+                    <a className="orders-link header-link" href="/orders">
 
                         <span className="orders-text">Orders</span>
                     </a>
 
-                    <a className="cart-link header-link" href="checkout.html">
+                    <a className="cart-link header-link" href="/checkout">
                         <img className="cart-icon" src="images/icons/cart-icon.png" />
                         <div className="cart-quantity">3</div>
                         <div className="cart-text">Cart</div>
@@ -80,7 +83,7 @@ function OrdersPage() {
                             </div>
 
                             <div className="product-actions">
-                                <a href="tracking.html">
+                                <a href="/tracking">
                                     <button className="track-package-button button-secondary">
                                         Track package
                                     </button>
@@ -108,7 +111,7 @@ function OrdersPage() {
                             </div>
 
                             <div className="product-actions">
-                                <a href="tracking.html">
+                                <a href="/tracking">
                                     <button className="track-package-button button-secondary">
                                         Track package
                                     </button>
@@ -159,7 +162,7 @@ function OrdersPage() {
                             </div>
 
                             <div className="product-actions">
-                                <a href="tracking.html">
+                                <a href="/tracking">
                                     <button className="track-package-button button-secondary">
                                         Track package
                                     </button>
