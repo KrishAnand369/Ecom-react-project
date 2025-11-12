@@ -5,7 +5,7 @@ function Header({cartItems}) {
 
     let totalItems = 0;
 
-    cartItems.array.forEach(cartItem => {
+    cartItems.forEach(cartItem => {
         totalItems += cartItem.quantity;
     });
     return (

@@ -1,9 +1,10 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Header from '../components/Header'
+import { formatMoney } from '../utils/money'
 import './HomePage.css'
 
-function HomePage() {
+function HomePage({cartItems}) {
 
     //using fetch to get data from backend API
     // fetch('http://localhost:3000/api/products')
@@ -16,7 +17,7 @@ function HomePage() {
 
     //using axios to get data from backend API
     const [products,setProducts] = useState([]);
-    const [cartItems,setCartItems] = useState([]);
+    
 
     useEffect (()=>{
         axios.get('http://localhost:3000/api/products')
@@ -25,10 +26,7 @@ function HomePage() {
         });
     },[]);  //only loads once  as array is [] 
 
-    axios.get('/api/cart-items')
-        .then((response)=>{
-            setCartItems(response.data);
-        });
+    
 
     return (
         <>
@@ -61,7 +59,7 @@ function HomePage() {
                                     </div>
 
                                     <div className="product-price">
-                                        ${(product.priceCents/100).toFixed(2)}
+                                        {formatMoney(product.priceCents)}
                                     </div>
 
                                     <div className="product-quantity-container">
