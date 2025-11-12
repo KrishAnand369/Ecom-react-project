@@ -3,11 +3,11 @@ import { Link } from 'react-router';
 import './TrackingPage.css'
 
 
-const TrackingPage = () => {
+const TrackingPage = ({cartItems}) => {
     return (
         <>
             <title>Order Tracking</title>
-            <Header />
+            <Header cartItems ={cartItems}/>
             <div className="tracking-page">
                 <div className="order-tracking">
                     <Link className="back-to-orders-link link-primary" to="/orders">

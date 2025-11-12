@@ -21,8 +21,8 @@ axios.get('/api/cart-items?expand=product')
     <Routes>
       <Route index element ={ <HomePage cartItems ={cartItems}/>} />
       <Route path='/checkout' element ={ <CheckoutPage cartItems ={cartItems} />} />
-      <Route path='/orders' element ={ <OrdersPage/>} />
-      <Route path='/tracking' element ={ <TrackingPage/>} />
+      <Route path='/orders' element ={ <OrdersPage cartItems ={cartItems}/> } />
+      <Route path='/tracking' element ={ <TrackingPage cartItems ={cartItems}/>} />
     </Routes>
   )
 }

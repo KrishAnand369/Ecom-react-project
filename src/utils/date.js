@@ -7,6 +7,6 @@ export function formatDateByFormat(timestampMs, formatString){
 }
 
 export function formatDate(timestampMs){
-    return dayjs(timestampMs).format('dddd,MMMM D');
+    return dayjs(timestampMs).format('dddd, MMMM D');
     
 }
