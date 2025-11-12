@@ -1,7 +1,6 @@
 import axios from 'axios'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import Header from '../components/Header'
-import { products} from '../assets/data/products'
 import './HomePage.css'
 
 function HomePage() {
@@ -16,12 +15,12 @@ function HomePage() {
 
 
     //using axios to get data from backend API
-    
-    
+    const [products,setProducts] = useState([]);
+
     useEffect (()=>{
         axios.get('http://localhost:3000/api/products')
         .then((response)=>{
-            console.log(response.data);
+            setProducts(response.data);
         });
     },[]);  //only loads once  as array is [] 
 
