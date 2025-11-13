@@ -1,16 +1,20 @@
+import axios from'axios'
 import { formatMoney } from '../../utils/money'
 
-const PaymentSummary = ({paymentSummary}) => {
+const PaymentSummary = ({paymentSummary,fetchCartItems}) => {
+    const createOrder =async ()=>{
+        await axios.post('/api/orders')
+        fetchCartItems();
+    };
+    
     return (
         <div className="payment-summary">
             <div className="payment-summary-title">
                 Payment Summary
             </div>
-
             {
                 paymentSummary && (
                     <>
-
                         <div className="payment-summary-row">
                             <div>Items ({paymentSummary.totalItems}):</div>
                             <div className="payment-summary-money">
@@ -46,13 +50,13 @@ const PaymentSummary = ({paymentSummary}) => {
                             </div>
                         </div>
 
-                        <button className="place-order-button button-primary">
+                        <button className="place-order-button button-primary"
+                            onClick={createOrder}>
                             Place your order
                         </button>
                     </>
                 )
             }
-
         </div>
     )
 }

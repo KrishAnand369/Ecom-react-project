@@ -1,6 +1,12 @@
+import axios  from 'axios';
 import { formatMoney } from '../../utils/money'
 import DeliveryOptions from './DeliveryOptions';
 const CartItemDetailGrid = ({cartItem,deliveryOptions,fetchCartItems}) => {
+    const deleteCartItem = async ()=>{
+       await axios.delete(`/api/cart-items/${cartItem.product.id}`);
+       await fetchCartItems();
+    };
+    
     return (
         <div className="cart-item-details-grid">
             <img className="product-image"
@@ -20,7 +26,8 @@ const CartItemDetailGrid = ({cartItem,deliveryOptions,fetchCartItems}) => {
                     <span className="update-quantity-link link-primary">
                         Update
                     </span>
-                    <span className="delete-quantity-link link-primary">
+                    <span className="delete-quantity-link link-primary"
+                        onClick={deleteCartItem}>
                         Delete
                     </span>
                 </div>
