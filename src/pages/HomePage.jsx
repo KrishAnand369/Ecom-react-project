@@ -19,11 +19,12 @@ function HomePage({cartItems}) {
     const [products,setProducts] = useState([]);
     
 
-    useEffect (()=>{
-        axios.get('/api/products')
-        .then((response)=>{
+    useEffect ( ()=>{
+        const getHomepageProducts = async () =>{
+            const response = await axios.get('/api/products')
             setProducts(response.data);
-        });
+        }
+        getHomepageProducts();
     },[]);  //only loads once  as array is [] 
 
     
