@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react';
 import OrderSummary from '../components/checkoutPage/OrderSummary';
 import PaymentSummary from '../components/checkoutPage/PaymentSummary';
 
-
 function CheckoutPage({ cartItems, fetchCartItems }) {
     let totalItems = 0;
 
