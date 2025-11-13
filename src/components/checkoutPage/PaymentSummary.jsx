@@ -1,4 +1,3 @@
-
 import { formatMoney } from '../../utils/money'
 
 const PaymentSummary = ({paymentSummary}) => {

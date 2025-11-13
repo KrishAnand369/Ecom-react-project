@@ -103,3 +103,7 @@ select:focus,
 input:focus {
   outline: 2px solid rgb(25, 135, 84);
 }
+input[type="radio"]:focus {
+  outline: none;
+  box-shadow: none;
+}

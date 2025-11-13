@@ -1,8 +1,8 @@
-
+import axios from 'axios'
 import { formatMoney } from '../../utils/money'
 import { formatDate } from '../../utils/date'
 
-const DeliveryOptions = ({deliveryOptions, cartItem}) => {
+const DeliveryOptions = ({deliveryOptions, cartItem,fetchCartItems}) => {
     return (
         <div className="delivery-options">
             <div className="delivery-options-title">
@@ -15,13 +15,22 @@ const DeliveryOptions = ({deliveryOptions, cartItem}) => {
                     if (deliveryOption.priceCents > 0) {
                         priceString = `${formatMoney(deliveryOption.priceCents)} - Shipping`
                     }
-                    return (
 
-                        <div key={deliveryOption.id} className="delivery-option">
+                    const updateDeliveryOption = async()=>{
+                        await axios.put(`/api/cart-items/${cartItem.productId}`,{
+                            deliveryOptionId:deliveryOption.id,
+                        });
+                        await fetchCartItems();
+                    }
+
+                    return (
+                        <div key={deliveryOption.id} className="delivery-option"
+                          onClick={updateDeliveryOption}>
                             <input type="radio"
                                 checked={
                                     deliveryOption.id === cartItem.deliveryOptionId
                                 }
+                                onChange={()=>{}}
                                 className="delivery-option-input"
                                 name={`delivery-option-${cartItem.productId}`} />
                             <div>
@@ -34,7 +43,6 @@ const DeliveryOptions = ({deliveryOptions, cartItem}) => {
                                 </div>
                             </div>
                         </div>
-
                     )
                 })
             }

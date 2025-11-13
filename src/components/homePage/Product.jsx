@@ -16,7 +16,7 @@ const Product = ({ product, fetchCartItems }) => {
         const quantitySelected = Number(event.target.value);
         setQuantity(quantitySelected);
     }
-    
+
     return (
         <div key={product.id} className="product-container">
             <div className="product-image-container">
