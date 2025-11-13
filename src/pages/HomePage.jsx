@@ -4,7 +4,7 @@ import Header from '../components/Header'
 import ProdctsGrid from '../components/homePage/ProductsGrid'
 import './HomePage.css'
 
-function HomePage({cartItems}) {
+function HomePage({cartItems, fetchCartItems}) {
 
     //using fetch to get data from backend API
     // fetch('http://localhost:3000/api/products')
@@ -32,10 +32,10 @@ function HomePage({cartItems}) {
     return (
         <>
             <title>Homepage</title>
-            <Header cartItems ={cartItems}/>
+                    <Header cartItems ={cartItems} />
 
             <div className="home-page">
-                <ProdctsGrid products={products} />
+                <ProdctsGrid products={products} fetchCartItems ={fetchCartItems} />
             </div>
         </>
     );
