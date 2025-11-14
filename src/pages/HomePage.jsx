@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router'
 import Header from '../components/Header'
 import ProdctsGrid from '../components/homePage/ProductsGrid'
 import './HomePage.css'
@@ -17,15 +18,20 @@ function HomePage({cartItems, fetchCartItems}) {
 
     //using axios to get data from backend API
     const [products,setProducts] = useState([]);
-    
+    const [searchParams] = useSearchParams();
+    const search = searchParams.get('search');
 
     useEffect ( ()=>{
         const getHomepageProducts = async () =>{
-            const response = await axios.get('/api/products')
+
+            const urlPath = search ? '/api/products?search':
+            '/api/products';
+
+            const response = await axios.get(urlPath);
             setProducts(response.data);
         }
         getHomepageProducts();
-    },[]);  //only loads once  as array is [] 
+    },[search]);  //only loads once  as array is [] 
 
     
 
