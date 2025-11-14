@@ -1,8 +1,10 @@
 import { useState } from 'react'
+//import {useNavigate} from 'react-router'
 import { formatMoney } from '../../utils/money'
 import axios from 'axios';
 const Product = ({ product, fetchCartItems }) => {
     const [quantity, setQuantity] = useState(1)
+    //const navigate = useNavigate();
 
     const addToCart = async () => {
         await axios.post('/api/cart-items', {
@@ -10,6 +12,7 @@ const Product = ({ product, fetchCartItems }) => {
             quantity // same as quantity: quantity
         });
         await fetchCartItems();
+       // navigate('/checkout')
     }
 
     const selectQuantity = (event) => {

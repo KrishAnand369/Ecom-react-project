@@ -2,7 +2,7 @@ import { Link } from 'react-router';
 import { Fragment } from 'react';
 import ProductDetails from './ProductDetails';
 
-const OrderDetailsGrid = ({ order }) => {
+const OrderDetailsGrid = ({ order ,fetchCartItems}) => {
     return (
         <div className="order-details-grid">
             {order.products.map((orderProduct) => {
@@ -13,7 +13,7 @@ const OrderDetailsGrid = ({ order }) => {
                             <img src={orderProduct.product.image} />
                         </div>
 
-                        <ProductDetails orderProduct={orderProduct} />
+                        <ProductDetails orderProduct={orderProduct} fetchCartItems={fetchCartItems}/>
 
                         <div className="product-actions">
                             <Link to="/tracking">

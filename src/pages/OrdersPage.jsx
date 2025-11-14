@@ -6,7 +6,7 @@ import OrderHeader from '../components/ordersPage/OrderHeader';
 import OrderDetailsGrid from '../components/ordersPage/OrderDetailsGrid';
 
 
-function OrdersPage({ cartItems }) {
+function OrdersPage({ cartItems ,fetchCartItems}) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ function OrdersPage({ cartItems }) {
                             <div key={order.id} className="order-container">
                                 <OrderHeader order={order} />
 
-                                <OrderDetailsGrid order={order} />
+                                <OrderDetailsGrid order={order} fetchCartItems={fetchCartItems} />
                             </div>
                         )
                     })}
