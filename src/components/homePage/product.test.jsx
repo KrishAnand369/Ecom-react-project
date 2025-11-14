@@ -1,4 +1,4 @@
-import { it, expect, describe, vi } from 'vitest';
+import { it, expect, describe, vi, beforeEach } from 'vitest';
 import axios from 'axios'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event';
@@ -7,20 +7,28 @@ import Product from './Product';
 vi.mock('axios');
 
 describe('Product component', () => {
-    const product = {
-        id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
-        image: "images/products/athletic-cotton-socks-6-pairs.jpg",
-        name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
-        rating: {
-            stars: 4.5,
-            count: 87
-        },
-        priceCents: 1090,
-        keywords: ["socks", "sports", "apparel"]
-    };
+    let product;
+
+    let fetchCartMock;
+
+    // Reset mocks and set up common variables before each test 
+    beforeEach(() => {
+        product = {
+            id: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+            image: "images/products/athletic-cotton-socks-6-pairs.jpg",
+            name: "Black and Gray Athletic Cotton Socks - 6 Pairs",
+            rating: {
+                stars: 4.5,
+                count: 87
+            },
+            priceCents: 1090,
+            keywords: ["socks", "sports", "apparel"]
+        };
+
+        fetchCartMock = vi.fn();
+    })
 
     it('displays the product details correctly', () => {
-        const fetchCartMock = vi.fn();
 
         render(<Product product={product} fetchCartItems={fetchCartMock} />);
 
@@ -46,8 +54,6 @@ describe('Product component', () => {
     });
 
     it('adds a product to cart', async () => {
-        const fetchCartMock = vi.fn();
-
         render(<Product product={product} fetchCartItems={fetchCartMock} />);
 
         const user = userEvent.setup();
