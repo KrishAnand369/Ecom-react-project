@@ -19,13 +19,14 @@ function Header({ cartItems }) {
     };
 
     let totalItems = 0;
+    if (cartItems && Array.isArray(cartItems)) {
+        cartItems.forEach(cartItem => {
+            totalItems += cartItem.quantity;
+        });
+    }
 
-    cartItems.forEach(cartItem => {
-        totalItems += cartItem.quantity;
-    });
-
-    const handleSearchKeyDown = (event)=>{
-        if (event.key === 'Enter'){
+    const handleSearchKeyDown = (event) => {
+        if (event.key === 'Enter') {
             searchProducts();
         }
     }
