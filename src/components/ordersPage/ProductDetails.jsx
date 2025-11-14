@@ -1,9 +1,9 @@
 import { formatDateByFormat } from '../../utils/date'
 import axios from 'axios';
 
-const ProductDetails = ({ orderProduct,fetchCartItems }) => {
-    const addToCart = async ()=>{
-        await axios.post('/api/cart-items',{
+const ProductDetails = ({ orderProduct, fetchCartItems }) => {
+    const addToCart = async () => {
+        await axios.post('/api/cart-items', {
             productId: orderProduct.product.id,
             quantity: 1
         });

@@ -47,8 +47,8 @@ function CheckoutPage({ cartItems, fetchCartItems }) {
                 <div className="page-title">Review your order</div>
 
                 <div className="checkout-grid">
-                    <OrderSummary cartItems={cartItems} deliveryOptions={deliveryOptions} fetchCartItems={fetchCartItems}/>
-                    <PaymentSummary paymentSummary={paymentSummary} fetchCartItems={fetchCartItems}/>
+                    <OrderSummary cartItems={cartItems} deliveryOptions={deliveryOptions} fetchCartItems={fetchCartItems} />
+                    <PaymentSummary paymentSummary={paymentSummary} fetchCartItems={fetchCartItems} />
                 </div>
             </div>
         </>

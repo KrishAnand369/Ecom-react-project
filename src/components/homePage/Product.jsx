@@ -4,7 +4,7 @@ import { formatMoney } from '../../utils/money'
 import axios from 'axios';
 const Product = ({ product, fetchCartItems }) => {
     const [quantity, setQuantity] = useState(1);
-    const[addedToCart,SetAddedToCart] = useState(false);
+    const [addedToCart, SetAddedToCart] = useState(false);
     //const navigate = useNavigate();
 
     const addToCart = async () => {
@@ -14,11 +14,11 @@ const Product = ({ product, fetchCartItems }) => {
         });
         await fetchCartItems();
         SetAddedToCart(true);
-        setTimeout(()=>{
+        setTimeout(() => {
             SetAddedToCart(false);
-        },2000);
-        
-       // navigate('/checkout')
+        }, 2000);
+
+        // navigate('/checkout')
     }
 
     const selectQuantity = (event) => {
@@ -66,7 +66,7 @@ const Product = ({ product, fetchCartItems }) => {
 
             <div className="product-spacer"></div>
 
-            <div className="added-to-cart" style={{opacity:addedToCart ? 1:0}}>
+            <div className="added-to-cart" style={{ opacity: addedToCart ? 1 : 0 }}>
                 <img src="images/icons/checkmark.png" />
                 Added
             </div>

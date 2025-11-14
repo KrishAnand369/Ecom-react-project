@@ -1,13 +1,13 @@
-import Header from'../components/Header'
+import Header from '../components/Header'
 import { Link } from 'react-router';
 import './TrackingPage.css'
 
 
-const TrackingPage = ({cartItems}) => {
+const TrackingPage = ({ cartItems }) => {
     return (
         <>
             <title>Order Tracking</title>
-            <Header cartItems ={cartItems}/>
+            <Header cartItems={cartItems} />
             <div className="tracking-page">
                 <div className="order-tracking">
                     <Link className="back-to-orders-link link-primary" to="/orders">

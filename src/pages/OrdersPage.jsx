@@ -6,7 +6,7 @@ import OrderHeader from '../components/ordersPage/OrderHeader';
 import OrderDetailsGrid from '../components/ordersPage/OrderDetailsGrid';
 
 
-function OrdersPage({ cartItems ,fetchCartItems}) {
+function OrdersPage({ cartItems, fetchCartItems }) {
     const [orders, setOrders] = useState([]);
 
     useEffect(() => {

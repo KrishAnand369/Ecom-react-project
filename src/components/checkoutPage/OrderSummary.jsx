@@ -1,7 +1,7 @@
 import { formatDate } from '../../utils/date'
 import CartItemDetailGrid from './CartItemDetailGrid';
 
-const OrderSummary = ({cartItems,deliveryOptions,fetchCartItems}) => {
+const OrderSummary = ({ cartItems, deliveryOptions, fetchCartItems }) => {
     return (
         <div className="order-summary">
             {deliveryOptions.length > 0 && cartItems.map((cartItem) => {
@@ -17,7 +17,7 @@ const OrderSummary = ({cartItems,deliveryOptions,fetchCartItems}) => {
                         <div className="delivery-date">
                             Delivery date: {formatDate(selectedDeliveryOption.estimatedDeliveryTimeMs)}
                         </div>
-                        <CartItemDetailGrid deliveryOptions ={deliveryOptions} cartItem ={cartItem } fetchCartItems={fetchCartItems}/>
+                        <CartItemDetailGrid deliveryOptions={deliveryOptions} cartItem={cartItem} fetchCartItems={fetchCartItems} />
                     </div>
                 )
             })}
