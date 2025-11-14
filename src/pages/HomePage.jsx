@@ -24,7 +24,7 @@ function HomePage({ cartItems, fetchCartItems }) {
     useEffect(() => {
         const getHomepageProducts = async () => {
 
-            const urlPath = search ? '/api/products?search' :
+            const urlPath = search ? `/api/products?search=${search}` :
                 '/api/products';
 
             const response = await axios.get(urlPath);

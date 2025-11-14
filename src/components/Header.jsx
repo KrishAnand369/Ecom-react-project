@@ -6,11 +6,7 @@ function Header({ cartItems }) {
     const navigate = useNavigate();
     const [SearchParams] = useSearchParams();
 
-
-
     const SearchText = SearchParams.get('search');
-
-
 
     const [search, setSearch] = useState(SearchText || '');
 
@@ -28,6 +24,12 @@ function Header({ cartItems }) {
         totalItems += cartItem.quantity;
     });
 
+    const handleSearchKeyDown = (event)=>{
+        if (event.key === 'Enter'){
+            searchProducts();
+        }
+    }
+
     return (
         <div className="header">
             <div className="left-section">
@@ -41,7 +43,7 @@ function Header({ cartItems }) {
 
             <div className="middle-section">
                 <input className="search-bar" type="text" placeholder="Search"
-                    value={search} onChange={updateSearchInput} />
+                    value={search} onChange={updateSearchInput} onKeyDown={handleSearchKeyDown} />
 
                 <button className="search-button" onClick={searchProducts} >
                     <img className="search-icon" src="images/icons/search-icon.png" />
