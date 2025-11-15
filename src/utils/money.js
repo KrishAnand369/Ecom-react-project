@@ -1,3 +1,7 @@
-export function formatMoney(amountCents){
-   return  `$${(amountCents/100).toFixed(2)}`
+export function formatMoney(amountCents) {
+   if (amountCents < 0) {
+      amountCents = amountCents * -1;
+      return `-$${(amountCents / 100).toFixed(2)}`
+   } else
+      return `$${(amountCents / 100).toFixed(2)}`
 }
