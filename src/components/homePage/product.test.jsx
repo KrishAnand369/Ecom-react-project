@@ -11,6 +11,8 @@ describe('Product component', () => {
 
     let fetchCartMock;
 
+    let user;
+
     // Reset mocks and set up common variables before each test 
     beforeEach(() => {
         product = {
@@ -26,6 +28,8 @@ describe('Product component', () => {
         };
 
         fetchCartMock = vi.fn();
+
+        user = userEvent.setup();
     })
 
     it('displays the product details correctly', () => {
@@ -56,7 +60,6 @@ describe('Product component', () => {
     it('adds a product to cart', async () => {
         render(<Product product={product} fetchCartItems={fetchCartMock} />);
 
-        const user = userEvent.setup();
         const addToCartBtn = screen.getByTestId('add-to-cart-button')
         await user.click(addToCartBtn);
 
@@ -68,5 +71,27 @@ describe('Product component', () => {
             }
         );
         expect(fetchCartMock).toHaveBeenCalled();
+    })
+
+    it('selects a Quantity', async  () => {
+
+        render(<Product product={product} fetchCartItems={fetchCartMock} />);
+        const quantitySelecter = screen.getByTestId('product-quantity-selecter');
+        expect(quantitySelecter).toHaveValue('1');
+
+        await user.selectOptions(quantitySelecter,'3')
+        expect(quantitySelecter).toHaveValue('3');
+
+        const addToCartBtn = screen.getByTestId('add-to-cart-button')
+        await user.click(addToCartBtn)
+        expect(axios.post).toHaveBeenCalledWith(
+            '/api/cart-items',
+            {
+                productId: "e43638ce-6aa0-4b85-b27f-e1d07eb678c6",
+                quantity: 3
+            }
+        );
+        expect(fetchCartMock).toHaveBeenCalled();
+        
     })
 });
